@@ -1,0 +1,18 @@
+{
+  "name": "micro-event-bus",
+  "version": "0.0.4",
+  "description": "Event bus library based on RabbitMQ",
+  "main": "src/index.ts",
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "dotenv": "8.2.0",
+    "nanoid": "^3.1.20",
+    "typedi": "^0.10.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.5.17",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
