@@ -2,7 +2,7 @@
  <img src="https://img.shields.io/badge/License-MIT-blue.svg">
 </p>
 
-<p align="center">A node event bus to communicate between microservices based on RabbitMQ message broker.</p>
+<p align="center">A node event bus to communicate between microservices based on RabbitMQ.</p>
 
 ## Features
 
