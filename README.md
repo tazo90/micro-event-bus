@@ -7,7 +7,8 @@
 ## Features
 
 - **Publish/Subscribe events**  - send/receive events to/from channels.
-- **Manage event bus service** - event bus manager allows to manage events.
+- **Manage events** - event bus manager allows to manage events.
+- **External broker support** - RabbitMQ as a service bus.
 
 ## Installation
 
