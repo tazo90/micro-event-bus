@@ -2,7 +2,7 @@
  <img src="https://img.shields.io/badge/License-MIT-blue.svg">
 </p>
 
-<p align="center">A node event bus to communicate between microservices based on RabbitMQ.</p>
+<p align="center">A node event bus based on RabbitMQ to communicate between microservices.</p>
 
 ## Features
 
@@ -10,6 +10,7 @@
 - **Manage events** - event bus manager allows to manage events.
 - **External broker support** - RabbitMQ as a service bus.
 - **Dependency injection** - easily inject parts of event bus.
+- **Logs**
 
 ## Installation
 
