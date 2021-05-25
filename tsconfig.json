@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "esnext",
+    "module": "commonjs",
     "lib": [
       "es2018",
       "dom",
@@ -14,7 +15,6 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "module": "commonjs",
     "pretty": true,
     "sourceMap": true,
     "outDir": "./dist",

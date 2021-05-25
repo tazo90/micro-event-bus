@@ -1,0 +1,15 @@
+{
+  "ignore": [
+    ".git",
+    ".eslintrc",
+    "node_modules/**",
+    "src/client/**",
+    "test/**",
+    "public/**",
+    "*.test.js",
+    "webpack.*.js"
+  ],
+  "watch": ["src/"],
+  "ext": "ts",
+  "exec": "cross-env NODE_ENV=development node --inspect -r ts-node/register ./src/index.ts"
+}
