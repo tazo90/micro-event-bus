@@ -5,7 +5,6 @@ import amqp from 'amqplib';
 export default class RabbitMQConnection {
   public connection;
   public eventBusUrl: string;
-  private _retryCount: number;
 
   constructor(
     @Inject('logger') private _logger,

@@ -57,7 +57,13 @@ export default class EventBusManager implements IEventBusManager {
   }
 
   public getEventByName(eventName: string): IEvent {
-    return this._events.find(e => e.name === eventName)
+    const event = this._events.find(e => e.name === eventName);
+
+    if (!event) {
+      throw new Error(`Event ${eventName} not found!`);
+    }
+
+    return event;
   }
 
   public getEventKey(event: IEvent): string {
