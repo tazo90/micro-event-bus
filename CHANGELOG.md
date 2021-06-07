@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.2.2 07/06/2021
+
+Add @types/node to dev dependencies
+
+## v0.2.1 07/06/2021
+
+Fix version in package.json
+
 ## v0.2.0 07/06/2021
 
 Allow library working as a module.
