@@ -1,32 +1,19 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": [
-      "es2018",
-      "dom",
-      "esnext"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-    ],
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "pretty": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "allowJs": true,
-    "noEmit": false,
-    "esModuleInterop": true
-  },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "tests"
-  ]
+      "target": "esnext",
+      "module": "commonjs",
+      "declaration": true,
+      "outDir": "./dist",
+      "strict": true,
+      "experimentalDecorators": true,
+      "lib": [
+        "es2018",
+        "dom",
+        "esnext"
+      ],
+      "noImplicitAny": false,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node"
+  }
 }
