@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.2.0 07/06/2021
+
+Allow library working as a module.
+
+### Added
+
+- .npmignore
+
+### Changed
+
+- Make tsconfig.json cleaner
+- More scripts in package.json
+- Rename main directory from /src to /lib
+- Fix getEventByName method in eventBusManager
+
+### Removed
+
+- Nodemon deps
+- Unused properties
+
 ## v0.1.0 25/05/2021
 
 Nodemon set up and missing deps.
@@ -17,7 +37,7 @@ Nodemon set up and missing deps.
 
 - Modify Event class to use readonly fields
 
-## v0.4.0 21/05/2021
+## v0.0.4 21/05/2021
 
 Initial release.
 
