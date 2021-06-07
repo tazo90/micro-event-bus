@@ -1,6 +1,6 @@
 {
   "name": "micro-event-bus",
-  "version": "0.0.4",
+  "version": "0.2.0",
   "description": "Event bus library based on RabbitMQ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
