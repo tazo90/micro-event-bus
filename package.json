@@ -8,6 +8,7 @@
     "prepare": "npm run build",
     "build": "tsc"
   },
+  "files": ["dist"],
   "dependencies": {
     "amqplib": "^0.8.0",
     "dayjs": "^1.10.4",
