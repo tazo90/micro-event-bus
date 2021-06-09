@@ -1,23 +1,21 @@
-import { Service } from 'typedi';
-import { IEvent } from './event';
-import { IEventHandler } from './eventHandler';
+import { IEvent, IEventType } from './event';
+import { IEventHandlerType } from './eventHandler';
 
 export interface IEventBusManager {
   isEmpty(): boolean,
-  addSubscription(event: IEvent, handler: IEventHandler): void,
-  removeSubscription(event: IEvent): void,
+  addSubscription(event: IEventType, handler: IEventHandlerType): void,
+  removeSubscription(event: IEventType): void,
   hasSubscriptionForEvent(eventName: string): boolean,
   clear(): void
   getHandlers(),
-  getHandlerForEvent(eventName: string): IEventHandler
-  getEventByName(eventName: string): IEvent
+  getHandlerForEvent(eventName: string): IEventHandlerType
+  getEventByName(eventName: string): IEventType
   getEventKey(event: IEvent): string,
 }
 
-@Service('eventBusManager')
 export default class EventBusManager implements IEventBusManager {
-  private _handlers: Record<string, IEventHandler>;
-  private _events: IEvent[];
+  private _handlers: Record<string, IEventHandlerType>;
+  private _events: IEventType[];
 
   constructor() {
     this._handlers = {}
@@ -28,7 +26,7 @@ export default class EventBusManager implements IEventBusManager {
     return Object.keys(this._handlers).length === 0;
   }
 
-  public addSubscription(event: IEvent, handler: IEventHandler): void {
+  public addSubscription(event: IEventType, handler: IEventHandlerType): void {
 
     if (!this._events.includes(event)) {
       this._events.push(event)
@@ -39,7 +37,7 @@ export default class EventBusManager implements IEventBusManager {
     }
   }
 
-  public removeSubscription(event: IEvent): void {
+  public removeSubscription(event: IEventType): void {
     delete this._handlers[event.name]
     this._events = this._events.filter((e) => e.name !== event.name);
   }
@@ -52,11 +50,11 @@ export default class EventBusManager implements IEventBusManager {
     this._handlers = {}
   }
 
-  public getHandlerForEvent(eventName: string): IEventHandler {
+  public getHandlerForEvent(eventName: string): IEventHandlerType {
     return this._handlers[eventName]
   }
 
-  public getEventByName(eventName: string): IEvent {
+  public getEventByName(eventName: string): IEventType {
     const event = this._events.find(e => e.name === eventName);
 
     if (!event) {

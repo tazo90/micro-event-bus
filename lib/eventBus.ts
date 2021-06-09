@@ -1,25 +1,30 @@
-import { Inject, Service } from 'typedi';
-import { IEvent } from './event';
-import { IEventHandler } from './eventHandler';
+import { IEvent, IEventType } from './event';
+import { IEventHandlerType } from './eventHandler';
+import EventBusManager from './eventBusManager';
+import RabbitMQConnection from './rabbitMQConnection';
 
 export interface IEventBus {
   publish(event: IEvent): Promise<void>,
-  subscribe(event: IEvent, handler: IEventHandler): Promise<void>,
-  unsubscribe(event: IEvent): void,
-  register(event: any): Promise<any>
+  subscribe(event: IEventType, handler: IEventHandlerType): Promise<void>,
+  unsubscribe(event: IEventType): void,
+  register(event: IEventType): Promise<any>
 }
 
-@Service('eventBus')
 export default class EventBus implements IEventBus {
-  private brokerName: string;
+  public readonly brokerName: string;
+  private _rabbitmq: RabbitMQConnection;
+  private _manager: EventBusManager;
+  private _logger: any;
 
   constructor(
-    @Inject('eventBusManager') private _manager,
-    @Inject('logger') private _logger,
-    @Inject('rabbitmq') private _rabbitmq,
-    brokerName: string
+    rabbitmq: RabbitMQConnection,
+    brokerName: string,
+    logger: any
   ) {
     this.brokerName = brokerName;
+    this._manager = new EventBusManager();
+    this._rabbitmq = rabbitmq;
+    this._logger = logger;
   }
 
   async publish(event: IEvent): Promise<void> {
@@ -40,7 +45,7 @@ export default class EventBus implements IEventBus {
       })
   }
 
-  async subscribe(event: IEvent, handler: IEventHandler): Promise<void> {
+  async subscribe(event: IEventType, handler: IEventHandlerType): Promise<void> {
     this._manager.addSubscription(event, handler);
 
     const connection = await this._rabbitmq.connection;
@@ -57,20 +62,20 @@ export default class EventBus implements IEventBus {
       await channel.ack(message);
 
       // run handler for event
-      const eventHandler = this._manager.getHandlerForEvent(event.name);
+      const eventHandler: any = this._manager.getHandlerForEvent(event.name);
       new eventHandler().handle(event);
     });
 
-    this._logger.info(`[*] Subscribed event: ${event.name}`);
+    this._logger.info(`[*] Subscribed handler: ${handler.name} listening ${event.name}`);
   }
 
-  unsubscribe(event: IEvent): void {
+  unsubscribe(event: IEventType): void {
     this._manager.removeSubscription(event);
 
     this._logger.info(`Unsubscribing from event ${event.name}.`)
   }
 
-  async register(event: IEvent): Promise<void> {
+  async register(event: IEventType): Promise<void> {
     const connection = await this._rabbitmq.connection;
     const channel = await connection.createChannel();
 
