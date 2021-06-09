@@ -9,8 +9,6 @@
 - **Publish/Subscribe events**  - send/receive events to/from channels.
 - **Manage events** - event bus manager allows to manage events.
 - **External broker support** - RabbitMQ as a service bus.
-- **Dependency injection** - easily inject parts of event bus.
-- **Logs**
 
 ## Installation
 

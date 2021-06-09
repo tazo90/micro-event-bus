@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.3.0 09/06/2021
+
+Refactoring eventBus and eventBusManager.
+
+### Added
+
+- Interfaces IEventType and IEventHandlerType
+
+### Removed
+
+- Dependency Injection
+- Logger
+
 ## v0.2.3 07/06/2021
 
 Fix version in package.json
