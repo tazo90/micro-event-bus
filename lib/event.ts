@@ -1,6 +1,10 @@
 import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
 
+export interface IEventType {
+  name: string;
+}
+
 export interface IEvent {
   id: string,
   creationDate: string,
