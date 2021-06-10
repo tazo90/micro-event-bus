@@ -8,7 +8,21 @@
     "prepare": "npm run build",
     "build": "tsc"
   },
-  "files": ["dist/**"],
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tazo90/micro-event-bus.git"
+  },
+  "keywords": [
+    "event-bus",
+    "event",
+    "microservice",
+    "event-driven"
+  ],
+  "author": "Mariusz Winnik",
+  "license": "MIT",
   "dependencies": {
     "amqplib": "^0.8.0",
     "dayjs": "^1.10.4",
